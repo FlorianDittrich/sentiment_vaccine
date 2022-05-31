@@ -1,4 +1,7 @@
+book_filename: "bookdownproj"
 delete_merged_file: true
+edit: https://https://github.com/FlorianDittrich/sentiment_vaccine/edit/master/%s
+view: https://github.com/FlorianDittrich/sentiment_vaccine/blob/master/%s
 output_dir: docs
 language:
   ui:
