@@ -6,8 +6,8 @@
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{iftex}
-\ifPDFTeX
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -109,7 +109,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\ifLuaTeX
+\ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
@@ -135,6 +135,14 @@ Im ersten Schritt müssen wir die Daten und die Packages einlesen
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(needs)}
 \FunctionTok{needs}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+Einlesen der Daten
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/covidvaccine\_v2.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
