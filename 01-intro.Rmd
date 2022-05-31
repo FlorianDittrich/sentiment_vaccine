@@ -1,0 +1,15 @@
+# Vorbereitung
+
+Im ersten Schritt müssen wir die Daten und die Packages einlesen
+
+```{r}
+library(needs)
+needs(tidyverse)
+```
+
+Einlesen der Daten
+
+```{r}
+data<-read.csv("data/covidvaccine_v2.csv")
+```
+

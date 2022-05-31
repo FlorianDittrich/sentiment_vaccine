@@ -1,0 +1,35 @@
+--- 
+title: "Sentiment Analysis with R"
+author: "Florian Dittrich"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a minimal example to create a sentiment analysis with R. We will use data which describe the vaccine-behavior in Covid-pandemic
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+<!--chapter:end:index.Rmd-->
+
+# Vorbereitung
+
+Im ersten Schritt müssen wir die Daten und die Packages einlesen
+
+```{r}
+library(needs)
+needs(tidyverse)
+```
+
+
+<!--chapter:end:01-intro.Rmd-->
+
+# erste Ergebnisse 
+
+an dieser Stelle können die ersten Ergebnisse stehen
+
+<!--chapter:end:02-first_results.Rmd-->
+
