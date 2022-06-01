@@ -1,3 +1,8 @@
 # erste Ergebnisse 
 
-an dieser Stelle können die ersten Ergebnisse stehen
+Visualisieren wir die ersten Ergebnisse mit Wordclouds
+
+```{r}
+wordcloud(data_text_corpus,min.freq = 500,colors=brewer.pal(8, "Dark2"),random.color = TRUE,max.words = 15000)
+```
+

@@ -1,0 +1,29 @@
+# Sentiment Analysis
+
+Nun führen wir die Sentiment Analyse durch. Dafür brauchen wir den Befehl `get_nrc_sentiment` . Dies ermöglicht uns die einzelnen Sentiments pro Tweet zu ermitteln. 
+
+```{r}
+data_text_sent<-get_nrc_sentiment((data$text))
+```
+
+Wir können sogar die absoluten Anzahlen für jedes einzelne Sentiment bestimmen. 
+
+```{r}
+data_text_sent_score<-data.frame(colSums(data_text_sent[, ]))
+names(data_text_sent_score)<-"Score"
+data_text_sent_score<-cbind("sentiment"=rownames(data_text_sent_score),data_text_sent_score)
+rownames(data_text_sent_score)<-NULL
+```
+
+Diese Scores können wir auch plotten.
+
+```{r}
+ggplot(data=data_text_sent_score,aes(x=sentiment,y=Score))+
+  geom_bar(aes(fill=sentiment),stat = "identity")+
+  xlab("Sentiments")+
+  ylab("scores")+
+  ggtitle("Sentiments of people in tweets ")+
+  theme_minimal()+
+  theme(legend.position="")
+```
+

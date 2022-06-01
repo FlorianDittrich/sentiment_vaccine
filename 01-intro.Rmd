@@ -5,7 +5,11 @@ Im ersten Schritt müssen wir die Daten und die Packages einlesen
 
 ```{r}
 library(needs)
-needs(tidyverse)
+needs(tidyverse, 
+      tm, 
+      wordcloud,
+      twitteR, 
+      syuzhet)
 ```
 
 Einlesen der Daten
@@ -14,3 +18,37 @@ Einlesen der Daten
 data<-read.csv("data/covidvaccine_v2.csv")
 ```
 
+
+```{r}
+data$text<-iconv(data$text, "WINDOWS-1252", "UTF-8")
+data$text<-tolower(data$text)
+
+```
+ Wir schreiben eine Funktion, um den Text zu bereinigen. Twitter interne Kennzeichnungen, Punktion, Links etc. sollen entfernt werden
+ 
+ 
+```{r}
+clean.text=function(x)
+  {x=  gsub("rt", "",x) 
+  x=gsub("@\\w+", "",x) 
+  x=gsub("[[:punct:]]", "",x)  
+  x=gsub("http\\w+", "",x)  
+  x=gsub("^ ", "",x) 
+  x=gsub(" $", "",x)
+  return(x)
+}
+
+data$text<-clean.text(data$text)
+
+```
+ 
+ 
+Nun müssen wir noch die Stopwords rausfiltern und einen Textkorpus erstellen
+
+```{r}
+data_text_corpus <- Corpus(VectorSource(data$text))
+data_text_corpus <- tm_map(data_text_corpus, function(x)removeWords(x,stopwords()))
+```
+
+
+ 
